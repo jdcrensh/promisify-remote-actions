@@ -1,11 +1,14 @@
 {
   "name": "promisify-remote-actions",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Promisifies an Apex controller's @RemoteAction methods",
   "license": "MIT",
   "author": "Jon Crenshaw <jdcrensh@gmail.com>",
-  "main": "lib/promisify-remote-actions.min.js",
+  "main": "lib/promisify-remote-actions.js",
   "repository": "github:jdcrensh/promisify-remote-actions",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "build": "webpack",
     "precommit": "lint-staged",
@@ -19,6 +22,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
+    "babel-runtime": "^6.23.0",
     "eslint": "^3.14.1",
     "eslint-plugin-prettier": "^2.1.1",
     "husky": "^0.13.4",
@@ -26,8 +30,5 @@
     "lint-staged": "^3.6.1",
     "prettier": "^1.4.4",
     "webpack": "^2.6.1"
-  },
-  "dependencies": {
-    "babel-runtime": "^6.23.0"
   }
 }
