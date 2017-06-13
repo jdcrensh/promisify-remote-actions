@@ -1,0 +1,9 @@
+{
+  "name": "promisify-remote-actions",
+  "version": "1.0.0",
+  "description": "Promisifies an Apex controller's @RemoteAction methods",
+  "license": "MIT",
+  "author": "Jon Crenshaw <jdcrensh@gmail.com>",
+  "main": "index.js",
+  "repository": "github:jdcrensh/promisify-remote-actions"
+}
