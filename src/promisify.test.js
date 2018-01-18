@@ -2,9 +2,7 @@ import promisifyRemoteActions from './promisify';
 
 test('promise should resolve', async () => {
   const method = promisifyRemoteActions((input, cb) =>
-    cb(input, {
-      status: true,
-    }),
+    cb(input, {status: true}),
   );
   const res = await method(true);
   expect(res).toEqual(true);
@@ -12,10 +10,7 @@ test('promise should resolve', async () => {
 
 test('promise should reject', async () => {
   const method = promisifyRemoteActions((input, cb) =>
-    cb(input, {
-      status: false,
-      message: 'failure',
-    }),
+    cb(input, {status: false, message: 'failure'}),
   );
   expect.assertions(1);
   try {
@@ -37,4 +32,13 @@ test('promisifies controller methods', async () => {
   expect(await ctrl.x()).toEqual(1);
   expect(await ctrl.y()).toEqual(2);
   expect(await ctrl.z()).toEqual(3);
+});
+
+test('uses callback instead of returning promise', async () => {
+  const method = promisifyRemoteActions((input, cb) =>
+    cb(input, {status: true}),
+  );
+  const cb = jest.fn();
+  method('hello', cb);
+  expect(cb).toHaveBeenCalledWith('hello', {status: true});
 });

@@ -1,5 +1,8 @@
-const wrap = (remoteAction, options = {}) => (...args) =>
-  new Promise((resolve, reject) => {
+const wrap = (remoteAction, options = {}) => (...args) => {
+  if (args.length && typeof args[args.length - 1] === 'function') {
+    return remoteAction.apply(window, [...args, options]);
+  }
+  return new Promise((resolve, reject) => {
     args.push((res, event) => {
       try {
         if (!event.status) {
@@ -14,6 +17,7 @@ const wrap = (remoteAction, options = {}) => (...args) =>
     args.push(options);
     remoteAction.apply(window, args);
   });
+};
 
 const promisifyRemoteActions = (Ctrl, options = {}) => {
   if (typeof Ctrl === 'function') {
