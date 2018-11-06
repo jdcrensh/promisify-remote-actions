@@ -1,16 +1,16 @@
 import promisifyRemoteActions from './promisify';
 
-test('promise should resolve', async () => {
+it('should resolve promise', async () => {
   const method = promisifyRemoteActions((input, cb) =>
-    cb(input, {status: true}),
+    cb(input, { status: true })
   );
   const res = await method(true);
   expect(res).toEqual(true);
 });
 
-test('promise should reject', async () => {
+it('should reject promise', async () => {
   const method = promisifyRemoteActions((input, cb) =>
-    cb(input, {status: false, message: 'failure'}),
+    cb(input, { status: false, message: 'failure' })
   );
   expect.assertions(1);
   try {
@@ -23,22 +23,31 @@ test('promise should reject', async () => {
   }
 });
 
-test('promisifies controller methods', async () => {
+it('should promisify controller methods', async () => {
   const ctrl = promisifyRemoteActions({
-    x: cb => cb(1, {status: true}),
-    y: cb => cb(2, {status: true}),
-    z: cb => cb(3, {status: true}),
+    x: cb => cb(1, { status: true }),
+    y: cb => cb(2, { status: true }),
+    z: cb => cb(3, { status: true }),
   });
   expect(await ctrl.x()).toEqual(1);
   expect(await ctrl.y()).toEqual(2);
   expect(await ctrl.z()).toEqual(3);
 });
 
-test('uses callback instead of returning promise', async () => {
+it('should use provided callback', async () => {
   const method = promisifyRemoteActions((input, cb) =>
-    cb(input, {status: true}),
+    cb(input, { status: true })
   );
   const cb = jest.fn();
   method('hello', cb);
-  expect(cb).toHaveBeenCalledWith('hello', {status: true});
+  expect(cb).toHaveBeenCalledWith('hello', { status: true });
+});
+
+it('should use provided callback and options', async () => {
+  const method = promisifyRemoteActions((input, cb) =>
+    cb(input, { status: true })
+  );
+  const cb = jest.fn();
+  method('hello', cb, { escape: false });
+  expect(cb).toHaveBeenCalledWith('hello', { status: true });
 });

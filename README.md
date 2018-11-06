@@ -53,14 +53,10 @@ public class MyApexController {
 
 ## Development
 
-### Running tests
+### Run tests
 
-`npm test` or `npm test -- --watch`
+`yarn test`
 
-#### With coverage
+### Build
 
-`npm test -- --coverage`
-
-### Building
-
-`npm build` (outputs to `./lib`)
+`yarn build`

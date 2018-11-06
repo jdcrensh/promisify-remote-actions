@@ -1,21 +1,16 @@
 {
-  "root": true,
-  "extends": "eslint:recommended",
-  "parser": "babel-eslint",
+  "extends": ["airbnb", "prettier"],
+  "plugins": ["prettier"],
   "env": {
     "browser": true,
-    "commonjs": true,
-    "es6": true,
-    "jest": true,
-    "node": true
+    "jest": true
   },
-  "plugins": [
-    "prettier"
-  ],
   "rules": {
-    "prettier/prettier": [
-      "warn",
-      "fb"
-    ]
+    "import/no-dynamic-require": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "off",
+    "no-console": "off",
+    "no-param-reassign": "off",
+    "prettier/prettier": "warn"
   }
 }

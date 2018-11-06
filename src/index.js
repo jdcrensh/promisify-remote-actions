@@ -1,1 +1,1 @@
-export {default} from './promisify';
+export { default } from './promisify';

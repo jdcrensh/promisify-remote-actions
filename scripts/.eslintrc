@@ -1,0 +1,11 @@
+{
+  "extends": ["../.eslintrc"],
+  "parserOptions": {
+    "sourceType": "script"
+  },
+  "rules": {
+    "global-require": "off",
+    "lines-around-directive": ["warn", "always"],
+    "strict": ["error", "global"]
+  }
+}

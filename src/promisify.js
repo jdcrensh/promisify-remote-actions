@@ -31,7 +31,7 @@ const promisifyRemoteActions = (Ctrl, options = {}) => {
       }
       return res;
     },
-    {},
+    {}
   );
 };
 
